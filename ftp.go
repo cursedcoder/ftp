@@ -546,7 +546,8 @@ func isBogusDataIP(cmdIP, dataIP net.IP) bool {
 	return dataIP.IsMulticast() ||
 		dataIP.IsUnspecified() ||
 		cmdIP.IsPrivate() != dataIP.IsPrivate() ||
-		cmdIP.IsLoopback() != dataIP.IsLoopback()
+		cmdIP.IsLoopback() != dataIP.IsLoopback() ||
+		cmdIP.String() != dataIP.String()
 }
 
 // getDataConnPort returns a host, port for a new data connection
